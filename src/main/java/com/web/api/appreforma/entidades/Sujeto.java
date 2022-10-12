@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -15,11 +15,8 @@ import java.time.LocalDate;
 public class Sujeto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sujetos_sujetoid_seq")
-    @SequenceGenerator(
-            name = "sujetos_sujetoid_seq",
-            allocationSize = 1
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "sujetoid")
     private Integer sujetoid;
 
@@ -38,9 +35,9 @@ public class Sujeto {
     @Column(name = "curp")
     private String curp;
 
-    //@Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     @Column(name = "fechaNacimiento")
-    private LocalDate fechaNacimiento;
+    private Date fechaNacimiento;
 
     @Column(name = "sexo")
     private int sexo;
