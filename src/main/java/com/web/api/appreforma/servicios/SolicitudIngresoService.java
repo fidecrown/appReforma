@@ -1,7 +1,7 @@
 package com.web.api.appreforma.servicios;
 
-import com.web.api.appreforma.entidades.Sujeto;
-import com.web.api.appreforma.repositorios.SujetoRepository;
+import com.web.api.appreforma.entidades.SolicitudIngreso;
+import com.web.api.appreforma.repositorios.SolicitudIngresoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,36 +10,35 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class SujetoService implements BaseService<Sujeto> {
+public class SolicitudIngresoService implements BaseService<SolicitudIngreso> {
 
     @Autowired
-    private SujetoRepository repositorio;
+    private SolicitudIngresoRepository repositorio;
+
 
     @Override
     @Transactional
-    public List<Sujeto> findAll() throws Exception {
+    public List<SolicitudIngreso> findAll() throws Exception {
         try {
-            List<Sujeto> lstSujetos = repositorio.findAll();
-            return lstSujetos;
+            List<SolicitudIngreso> lstSolicitudes = repositorio.findAll();
+            return lstSolicitudes;
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
 
     @Override
-    @Transactional
-    public Sujeto findById(Integer id) throws Exception {
+    public SolicitudIngreso findById(Integer id) throws Exception {
         try {
-            Optional<Sujeto> sujeto = repositorio.findById(id);
-            return sujeto.get();
+            Optional<SolicitudIngreso> solIng = repositorio.findById(id);
+            return solIng.get();
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
 
     @Override
-    @Transactional
-    public Sujeto save(Sujeto entidad) throws Exception {
+    public SolicitudIngreso save(SolicitudIngreso entidad) throws Exception {
         try {
             return repositorio.save(entidad);
         }catch (Exception e){
@@ -48,20 +47,18 @@ public class SujetoService implements BaseService<Sujeto> {
     }
 
     @Override
-    @Transactional
-    public Sujeto update(Integer id, Sujeto entidad) throws Exception {
+    public SolicitudIngreso update(Integer id, SolicitudIngreso entidad) throws Exception {
         try {
-            Optional<Sujeto> opt = repositorio.findById(id);
-            Sujeto sujeto = opt.get();
-            sujeto = repositorio.save(entidad);
-            return sujeto;
+            Optional<SolicitudIngreso> opt = repositorio.findById(id);
+            SolicitudIngreso solIng = opt.get();
+            solIng = repositorio.save(entidad);
+            return solIng;
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
 
     @Override
-    @Transactional
     public boolean delete(Integer id) throws Exception {
         try {
             if(repositorio.existsById(id)){

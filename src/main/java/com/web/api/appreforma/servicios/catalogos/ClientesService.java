@@ -1,7 +1,8 @@
-package com.web.api.appreforma.servicios;
+package com.web.api.appreforma.servicios.catalogos;
 
-import com.web.api.appreforma.entidades.Sujeto;
-import com.web.api.appreforma.repositorios.SujetoRepository;
+import com.web.api.appreforma.entidades.catalogos.Clientes;
+import com.web.api.appreforma.repositorios.catalogos.ClientesRepository;
+import com.web.api.appreforma.servicios.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,17 +11,18 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class SujetoService implements BaseService<Sujeto> {
+public class ClientesService implements BaseService<Clientes> {
 
     @Autowired
-    private SujetoRepository repositorio;
+    private ClientesRepository repositorio;
+
 
     @Override
     @Transactional
-    public List<Sujeto> findAll() throws Exception {
+    public List<Clientes> findAll() throws Exception {
         try {
-            List<Sujeto> lstSujetos = repositorio.findAll();
-            return lstSujetos;
+            List<Clientes> lstClientes = repositorio.findAll();
+            return lstClientes;
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
@@ -28,10 +30,10 @@ public class SujetoService implements BaseService<Sujeto> {
 
     @Override
     @Transactional
-    public Sujeto findById(Integer id) throws Exception {
+    public Clientes findById(Integer id) throws Exception {
         try {
-            Optional<Sujeto> sujeto = repositorio.findById(id);
-            return sujeto.get();
+            Optional<Clientes> cliente = repositorio.findById(id);
+            return cliente.get();
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
@@ -39,7 +41,7 @@ public class SujetoService implements BaseService<Sujeto> {
 
     @Override
     @Transactional
-    public Sujeto save(Sujeto entidad) throws Exception {
+    public Clientes save(Clientes entidad) throws Exception {
         try {
             return repositorio.save(entidad);
         }catch (Exception e){
@@ -49,12 +51,12 @@ public class SujetoService implements BaseService<Sujeto> {
 
     @Override
     @Transactional
-    public Sujeto update(Integer id, Sujeto entidad) throws Exception {
+    public Clientes update(Integer id, Clientes entidad) throws Exception {
         try {
-            Optional<Sujeto> opt = repositorio.findById(id);
-            Sujeto sujeto = opt.get();
-            sujeto = repositorio.save(entidad);
-            return sujeto;
+            Optional<Clientes> opt = repositorio.findById(id);
+            Clientes cliente = opt.get();
+            cliente = repositorio.save(entidad);
+            return cliente;
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }

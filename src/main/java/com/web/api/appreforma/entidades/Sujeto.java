@@ -41,4 +41,8 @@ public class Sujeto {
 
     @Column(name = "sexo")
     private int sexo;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "enteid")
+    private Ente ente;
 }
