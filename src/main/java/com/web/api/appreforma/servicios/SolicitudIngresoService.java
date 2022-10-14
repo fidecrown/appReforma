@@ -28,6 +28,7 @@ public class SolicitudIngresoService implements BaseService<SolicitudIngreso> {
     }
 
     @Override
+    @Transactional
     public SolicitudIngreso findById(Integer id) throws Exception {
         try {
             Optional<SolicitudIngreso> solIng = repositorio.findById(id);
@@ -38,6 +39,7 @@ public class SolicitudIngresoService implements BaseService<SolicitudIngreso> {
     }
 
     @Override
+    @Transactional
     public SolicitudIngreso save(SolicitudIngreso entidad) throws Exception {
         try {
             return repositorio.save(entidad);
@@ -47,6 +49,7 @@ public class SolicitudIngresoService implements BaseService<SolicitudIngreso> {
     }
 
     @Override
+    @Transactional
     public SolicitudIngreso update(Integer id, SolicitudIngreso entidad) throws Exception {
         try {
             Optional<SolicitudIngreso> opt = repositorio.findById(id);
@@ -59,6 +62,7 @@ public class SolicitudIngresoService implements BaseService<SolicitudIngreso> {
     }
 
     @Override
+    @Transactional
     public boolean delete(Integer id) throws Exception {
         try {
             if(repositorio.existsById(id)){
@@ -68,6 +72,14 @@ public class SolicitudIngresoService implements BaseService<SolicitudIngreso> {
 
             throw new Exception();
 
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
+    @Transactional
+    public Integer getNumeroSolicitud() throws Exception {
+        try {
+            return repositorio.getNumeroSolicitud();
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }

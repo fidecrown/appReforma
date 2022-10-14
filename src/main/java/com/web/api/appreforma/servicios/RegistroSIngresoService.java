@@ -1,9 +1,6 @@
 package com.web.api.appreforma.servicios;
 
-import com.web.api.appreforma.entidades.Ente;
-import com.web.api.appreforma.entidades.RegistroSIngreso;
-import com.web.api.appreforma.entidades.Sujeto;
-import com.web.api.appreforma.servicios.catalogos.ClienteService;
+import com.web.api.appreforma.entidades.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,18 +10,33 @@ import javax.transaction.Transactional;
 public class RegistroSIngresoService {
 
     @Autowired
-    private EnteService enteService;
+    private SolicitudIngresoService solicitudIngresoService;
     @Autowired
-    private ClienteService clienteService;
+    private PerfilClienteService perfilClienteService;
+    @Autowired
+    private EnteService enteService;
     @Autowired
     private SujetoService sujeService;
 
     @Transactional
     public void save(RegistroSIngreso entidad){
         try {
-            Ente ente = enteService.save(entidad.getEnte());
+            /*
+                OBTENEMOS LOS DATOS DE LA PANTALLA DE LA SOLICITUD DE INGRESO
+                POSTERIORMENTE LO PERSISTIMOS EN LA BD
+             */
+            SolicitudIngreso soli = entidad.getSolicitudIngreso();
+            soli.setNumero_solicitud(solicitudIngresoService.getNumeroSolicitud());
+            soli = solicitudIngresoService.save(entidad.getSolicitudIngreso());
+            /*
+                OBTENEMOS LOS DATOS DE LA PANTALLA DEL PERFIL DEL CLIENTE
+                POSTERIORMENTE LO PERSISTIMOS EN LA BD
+             */
+            PerfilCliente pc = entidad.getPerfilCliente();
+            pc.setSolicitudIngreso(soli);
+            perfilClienteService.save(pc);
 
-            clienteService.save(entidad.getCliente());
+            Ente ente = enteService.save(entidad.getEnte());
 
             Sujeto sujeto = entidad.getSujeto();
             sujeto.setEnte(ente);

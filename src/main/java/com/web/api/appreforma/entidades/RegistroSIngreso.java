@@ -12,10 +12,13 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class RegistroSIngreso {
 
+    private SolicitudIngreso solicitudIngreso;
+
+    private PerfilCliente perfilCliente;
+
     private Ente ente;
 
     private Sujeto sujeto;
 
-    private Cliente cliente;
 
 }

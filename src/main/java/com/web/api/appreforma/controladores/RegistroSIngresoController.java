@@ -21,6 +21,7 @@ public class RegistroSIngresoController {
             registroSIngresoService.save(entidad);
             return ResponseEntity.status(HttpStatus.OK).body("{\"msj\" : \"Solicitud de Ingreso Guardada Correctamente.\"}");
         }catch (Exception e){
+            System.out.println(e.getMessage());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\" : \"Error por favor intente mas tarde.\"}");
         }
     }
