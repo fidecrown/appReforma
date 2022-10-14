@@ -1,7 +1,7 @@
 package com.web.api.appreforma.servicios.catalogos;
 
-import com.web.api.appreforma.entidades.catalogos.Nacionalidades;
-import com.web.api.appreforma.repositorios.catalogos.NacionalidadesRepository;
+import com.web.api.appreforma.entidades.catalogos.Cliente;
+import com.web.api.appreforma.repositorios.catalogos.ClienteRepository;
 import com.web.api.appreforma.servicios.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,17 +11,18 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class NacionalidadesService implements BaseService<Nacionalidades> {
+public class ClienteService implements BaseService<Cliente> {
 
     @Autowired
-    private NacionalidadesRepository repositorio;
+    private ClienteRepository repositorio;
+
 
     @Override
     @Transactional
-    public List<Nacionalidades> findAll() throws Exception {
+    public List<Cliente> findAll() throws Exception {
         try {
-            List<Nacionalidades> lstNacion = repositorio.findAll();
-            return lstNacion;
+            List<Cliente> lstClientes = repositorio.findAll();
+            return lstClientes;
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
@@ -29,10 +30,10 @@ public class NacionalidadesService implements BaseService<Nacionalidades> {
 
     @Override
     @Transactional
-    public Nacionalidades findById(Integer id) throws Exception {
+    public Cliente findById(Integer id) throws Exception {
         try {
-            Optional<Nacionalidades> nacion = repositorio.findById(id);
-            return nacion.get();
+            Optional<Cliente> cliente = repositorio.findById(id);
+            return cliente.get();
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
@@ -40,7 +41,7 @@ public class NacionalidadesService implements BaseService<Nacionalidades> {
 
     @Override
     @Transactional
-    public Nacionalidades save(Nacionalidades entidad) throws Exception {
+    public Cliente save(Cliente entidad) throws Exception {
         try {
             return repositorio.save(entidad);
         }catch (Exception e){
@@ -50,12 +51,12 @@ public class NacionalidadesService implements BaseService<Nacionalidades> {
 
     @Override
     @Transactional
-    public Nacionalidades update(Integer id, Nacionalidades entidad) throws Exception {
+    public Cliente update(Integer id, Cliente entidad) throws Exception {
         try {
-            Optional<Nacionalidades> opt = repositorio.findById(id);
-            Nacionalidades nac = opt.get();
-            nac = repositorio.save(entidad);
-            return nac;
+            Optional<Cliente> opt = repositorio.findById(id);
+            Cliente cliente = opt.get();
+            cliente = repositorio.save(entidad);
+            return cliente;
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
@@ -76,5 +77,4 @@ public class NacionalidadesService implements BaseService<Nacionalidades> {
             throw new Exception(e.getMessage());
         }
     }
-
 }

@@ -1,7 +1,7 @@
 package com.web.api.appreforma.entidades;
 
-import com.web.api.appreforma.entidades.catalogos.Clientes;
-import com.web.api.appreforma.entidades.catalogos.Nacionalidades;
+import com.web.api.appreforma.entidades.catalogos.Cliente;
+import com.web.api.appreforma.entidades.catalogos.Nacionalidad;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,7 +29,7 @@ public class SolicitudIngreso {
 
     @OneToOne
     @JoinColumn(name = "nacionalidadid")
-    private Nacionalidades nacionalidad;
+    private Nacionalidad nacionalidad;
 
     @Column(name = "correoelectronico")
     private String correoelectronico;
@@ -54,7 +54,7 @@ public class SolicitudIngreso {
 
     @OneToOne
     @JoinColumn(name = "catalogoclienteid")
-    private Clientes cliente;
+    private Cliente cliente;
 
     @Column(name = "dondetienecuentas")
     private String dondetienecuentas;

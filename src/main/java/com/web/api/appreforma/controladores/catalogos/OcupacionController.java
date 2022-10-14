@@ -1,7 +1,7 @@
 package com.web.api.appreforma.controladores.catalogos;
 
-import com.web.api.appreforma.entidades.catalogos.Nacionalidades;
-import com.web.api.appreforma.servicios.catalogos.NacionalidadesService;
+import com.web.api.appreforma.entidades.catalogos.Ocupacion;
+import com.web.api.appreforma.servicios.catalogos.OcupacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "reforma/api/v1/catalogos/nacionalidades")
-public class NacionalidadesController {
+@RequestMapping(path = "reforma/api/v1/catalogos/ocupaciones")
+public class OcupacionController {
 
     @Autowired
-    private NacionalidadesService service;
+    private OcupacionService service;
 
     @GetMapping("")
     public ResponseEntity<?> getAll(){
@@ -34,7 +34,7 @@ public class NacionalidadesController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> guardarEntidad(@RequestBody Nacionalidades entidad){
+    public ResponseEntity<?> guardarEntidad(@RequestBody Ocupacion entidad){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(service.save(entidad));
         }catch (Exception e){
@@ -43,7 +43,7 @@ public class NacionalidadesController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> actualizar(@PathVariable Integer id,@RequestBody Nacionalidades entidad){
+    public ResponseEntity<?> actualizar(@PathVariable Integer id,@RequestBody Ocupacion entidad){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(service.update(id,entidad));
         }catch (Exception e){

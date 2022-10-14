@@ -1,5 +1,7 @@
 package com.web.api.appreforma.entidades;
 
+import com.web.api.appreforma.entidades.catalogos.Ciudad;
+import com.web.api.appreforma.entidades.catalogos.Ocupacion;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -86,17 +88,13 @@ public class PerfilCliente {
     @JoinColumn(name = "solicitudid")
     private SolicitudIngreso solicitudIngreso;
 
-
-    /*
     @OneToOne
     @JoinColumn(name = "ciudadid")
-    private Ciudades ciudad;
-    */
+    private Ciudad ciudad;
 
-    /*
     @OneToOne
     @JoinColumn(name = "ocupacionid")
-    private Ocupaciones ocupacion;
-    */
+    private Ocupacion ocupacion;
+
 
 }
