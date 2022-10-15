@@ -1,7 +1,7 @@
 package com.web.api.appreforma.controladores;
 
 import com.web.api.appreforma.entidades.Cliente;
-import com.web.api.appreforma.servicios.catalogos.ClienteService;
+import com.web.api.appreforma.servicios.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.web.api.appreforma.servicios.catalogos;
+package com.web.api.appreforma.servicios;
 
 import com.web.api.appreforma.entidades.Cliente;
 import com.web.api.appreforma.repositorios.ClienteRepository;

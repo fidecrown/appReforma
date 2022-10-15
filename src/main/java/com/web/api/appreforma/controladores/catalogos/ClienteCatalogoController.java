@@ -1,8 +1,7 @@
 package com.web.api.appreforma.controladores.catalogos;
 
 import com.web.api.appreforma.entidades.catalogos.ClienteCatalogo;
-import com.web.api.appreforma.servicios.ClienteCatalogoService;
-import com.web.api.appreforma.servicios.catalogos.ClienteService;
+import com.web.api.appreforma.servicios.catalogos.ClienteCatalogoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
