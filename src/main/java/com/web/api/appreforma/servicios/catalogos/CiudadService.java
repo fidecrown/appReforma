@@ -1,7 +1,6 @@
 package com.web.api.appreforma.servicios.catalogos;
 
 import com.web.api.appreforma.entidades.catalogos.Ciudad;
-import com.web.api.appreforma.entidades.catalogos.Cliente;
 import com.web.api.appreforma.repositorios.catalogos.CiudadRepository;
 import com.web.api.appreforma.servicios.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;

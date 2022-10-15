@@ -1,6 +1,6 @@
-package com.web.api.appreforma.controladores.catalogos;
+package com.web.api.appreforma.controladores;
 
-import com.web.api.appreforma.entidades.catalogos.Cliente;
+import com.web.api.appreforma.entidades.Cliente;
 import com.web.api.appreforma.servicios.catalogos.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "reforma/api/v1/catalogos/clientes")
+@RequestMapping(path = "reforma/api/v1/clientes")
 public class ClienteController {
 
     @Autowired

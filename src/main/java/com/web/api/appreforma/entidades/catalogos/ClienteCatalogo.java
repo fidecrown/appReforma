@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "catalogo_clientes")
-public class Cliente {
+public class ClienteCatalogo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "catalogoclienteid")

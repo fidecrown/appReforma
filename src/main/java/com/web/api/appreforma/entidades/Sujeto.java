@@ -42,7 +42,23 @@ public class Sujeto {
     @Column(name = "sexo")
     private int sexo;
 
+    @Temporal(TemporalType.DATE)
+    @Column(name = "created_at")
+    private Date created_at;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "update_at")
+    private Date update_at;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "enteid")
     private Ente ente;
+    @PrePersist
+    public void fcrecacion(){
+        this.created_at = new Date();
+    }
+    @PreUpdate
+    public void factualizacion(){
+        this.update_at = new Date();
+    }
 }
