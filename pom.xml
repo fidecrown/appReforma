@@ -47,10 +47,20 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--
+        #NOTA: DESPUES DE CORRER EL PROYECTO Y UNA VEZ FINALIZADA LA CREACION
+        DE LAS TABLAS EN LA BASE DE DATOS.
+
+        DESCOMENTAR LA SIGUIENTE DEPENCIA CON LA FINALIDAD DE PODER CARGAR
+        E INSERTAR LOS REGISTROS DE TODOS LOS CATALOGOS DE LA BD.
+
+        -->
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
         </dependency>
+
+
     </dependencies>
 
     <build>
