@@ -17,5 +17,7 @@ public class RegistroSIngreso {
 
     private Sujeto sujeto;
 
+    private Cliente cliente;
+
 
 }

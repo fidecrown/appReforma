@@ -17,6 +17,8 @@ public class RegistroSIngresoService {
     private EnteService enteService;
     @Autowired
     private SujetoService sujeService;
+    @Autowired
+    private ClienteService clienteService;
 
     @Transactional
     public void save(RegistroSIngreso entidad){
@@ -27,7 +29,7 @@ public class RegistroSIngresoService {
              */
             SolicitudIngreso soli = entidad.getSolicitudIngreso();
             soli.setNumero_solicitud(solicitudIngresoService.getNumeroSolicitud());
-            soli = solicitudIngresoService.save(entidad.getSolicitudIngreso());
+            soli = solicitudIngresoService.save(soli);
             /*
                 OBTENEMOS LOS DATOS DE LA PANTALLA DEL PERFIL DEL CLIENTE
                 POSTERIORMENTE LO PERSISTIMOS EN LA BD
@@ -36,11 +38,28 @@ public class RegistroSIngresoService {
             pc.setSolicitudIngreso(soli);
             perfilClienteService.save(pc);
 
+            /*
+                FORMAMOS LOS DATOS PARA LA TABLA ENTE
+                POSTERIORMENTE LO PERSISTIMOS EN LA BD
+             */
             Ente ente = enteService.save(entidad.getEnte());
 
+            /*
+                FORMAMOS LOS DATOS PARA LA TABLA SUJETOS
+                POSTERIORMENTE LO PERSISTIMOS EN LA BD
+             */
             Sujeto sujeto = entidad.getSujeto();
             sujeto.setEnte(ente);
             sujeService.save(sujeto);
+
+            /*
+                FORMAMOS LOS DATOS PARA LA TABLA CLIENTES
+                POSTERIORMENTE LO PERSISTIMOS EN LA BD
+             */
+            Cliente cliente = entidad.getCliente();
+            cliente.setNumero_cliente(clienteService.getNumero_Cliente());
+            cliente.setSolicitudIngreso(soli);
+            clienteService.save(cliente);
 
         } catch (Exception e) {
             throw new RuntimeException(e);

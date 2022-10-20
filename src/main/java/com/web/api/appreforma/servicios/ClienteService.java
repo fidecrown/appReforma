@@ -77,4 +77,13 @@ public class ClienteService implements BaseService<Cliente> {
             throw new Exception(e.getMessage());
         }
     }
+
+    @Transactional
+    public String getNumero_Cliente() throws Exception {
+        try {
+            return repositorio.getNumero_Cliente();
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
 }

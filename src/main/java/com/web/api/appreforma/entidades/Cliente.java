@@ -37,13 +37,30 @@ public class Cliente {
     private Date fechareingreso;
 
     @Column(name = "estatus")
-    private String estatus;
+    private Integer estatus;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "created_at")
+    private Date created_at;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "update_at")
+    private Date update_at;
 
     @OneToOne
     @JoinColumn(name = "solicitudid")
     private SolicitudIngreso solicitudIngreso;
 
     @OneToOne
-    @JoinColumn(name = "bajas_id")
+    @JoinColumn(name = "bajaid")
     private Baja baja;
+
+    @PrePersist
+    public void fcrecacion(){
+        this.created_at = new Date();
+    }
+    @PreUpdate
+    public void factualizacion(){
+        this.update_at = new Date();
+    }
 }
