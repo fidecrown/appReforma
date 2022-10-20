@@ -10,17 +10,20 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "catalogo_ocupaciones")
-public class Ocupacion {
+@Table(name = "catalogo_sector")
+public class Sector {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ocupacionid")
-    private Integer ocupacionid;
+    @Column(name = "sectorid")
+    private Integer sectorid;
 
     @Column(name = "descripcion")
     private String descripcion;
 
-    @OneToOne
-    @JoinColumn(name = "sector_ocupacionid")
-    private SectorOcupacion sectorOcupacion;
+    @Column(name = "nivelriesgo")
+    private Integer nivelriesgo;
+
+    @Column(name = "sector")
+    private String sector;
+
 }
