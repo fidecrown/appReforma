@@ -19,5 +19,10 @@ public class RegistroSIngreso {
 
     private Cliente cliente;
 
+    private Domicilio domicilio;
+
+    private SolicitudLaboral solicitudLaboral;
+
+    private SolicitudRelaciones solicitudRelaciones;
 
 }
