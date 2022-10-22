@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Objects;
 
 @Service
 public class RegistroSIngresoService {
@@ -115,14 +116,20 @@ public class RegistroSIngresoService {
             /*********** FIN  PANTALLA RELACION LABORAL **********/
 
             /*********** COMIENZA EL APARTADO DE LA PANTALLA RELACION CON EL CLIENTE **********/
-            Cliente clienteRelacion = entidad.getSolicitudRelaciones().getRelacionesCliente().getCliente();
+            System.out.println("COMIENZA LA PANTALLA DE RELACIONES");
+            Cliente clienteRelacion = null;
             Relacion relacion = entidad.getSolicitudRelaciones().getRelacion();
             Ente enteRelacion = null;
             Sujeto sujeRelacion = null;
             Domicilio domRelacion = null;
 
+            System.out.println("PASO LOS NULLS ");
 
-            if(clienteRelacion != null){
+
+            if(entidad.getSolicitudRelaciones().getRelacionesCliente() != null){
+                System.out.println("ENTRO AL CLIENTE ");
+                clienteRelacion = entidad.getSolicitudRelaciones().getRelacionesCliente().getCliente();
+
                 enteRelacion = enteService.save(entidad.getSolicitudRelaciones().getRelacionesCliente().getEnte());
 
                 sujeRelacion = entidad.getSolicitudRelaciones().getRelacionesCliente().getSujeto();
@@ -136,17 +143,18 @@ public class RegistroSIngresoService {
                 relacion.setCliente(clienteService.save(clienteRelacion));
 
             }else {
+                System.out.println("ENTRO A LLENAR LA RELACION ");
                 enteRelacion = enteService.save(entidad.getSolicitudRelaciones().getEnte());
 
                 sujeRelacion = entidad.getSolicitudRelaciones().getSujeto();
                 sujeRelacion.setEnte(enteRelacion);
-                sujeService.save(sujeRelacion);
+                sujeRelacion = sujeService.save(sujeRelacion);
 
                 domRelacion = entidad.getSolicitudRelaciones().getDomicilio();
                 domRelacion.setEnte(enteRelacion);
-                this.domicilioService.save(domRelacion);
+                domRelacion = this.domicilioService.save(domRelacion);
             }
-
+            System.out.println("LLENOS LOS FILTROS ");
             relacion.setSolicitudIngreso(soli);
             relacion.setSujeto(sujeRelacion);
 
@@ -157,6 +165,7 @@ public class RegistroSIngresoService {
 
 
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             throw new RuntimeException(e);
         }
     }
