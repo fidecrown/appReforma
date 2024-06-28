@@ -1,44 +1,38 @@
 package com.web.api.appreforma.servicios;
 
-import ch.qos.logback.core.net.server.Client;
 import com.web.api.appreforma.entidades.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Objects;
-
 @Service
 public class RegistroSIngresoService {
+    private final SolicitudIngresoService solicitudIngresoService;
+    private final PerfilClienteService perfilClienteService;
+    private final EnteService enteService;
+    private final SujetoService sujeService;
+    private final ClienteService clienteService;
+    private final ClienteSujetoService cliSujService;
+    private final DomicilioService domicilioService;
+    private final EmpresaTrabajaService empresaTrabajaService;
+    private final TrabajaEnService trabajaEnService;
+    private final RelacionService relacionService;
 
-    @Autowired
-    private SolicitudIngresoService solicitudIngresoService;
-    @Autowired
-    private PerfilClienteService perfilClienteService;
-    @Autowired
-    private EnteService enteService;
-    @Autowired
-    private SujetoService sujeService;
-    @Autowired
-    private ClienteService clienteService;
-    @Autowired
-    private ClienteSujetoService cliSujService;
-
-    @Autowired
-    private DomicilioService domicilioService;
-
-    @Autowired
-    private EmpresaTrabajaService empresaTrabajaService;
-
-    @Autowired
-    private TrabajaEnService trabajaEnService;
-
-    @Autowired
-    private RelacionService relacionService;
-
+    public RegistroSIngresoService(SolicitudIngresoService solicitudIngresoService, PerfilClienteService perfilClienteService, EnteService enteService, SujetoService sujeService, ClienteService clienteService, ClienteSujetoService cliSujService, DomicilioService domicilioService, EmpresaTrabajaService empresaTrabajaService, TrabajaEnService trabajaEnService, RelacionService relacionService) {
+        this.solicitudIngresoService = solicitudIngresoService;
+        this.perfilClienteService = perfilClienteService;
+        this.enteService = enteService;
+        this.sujeService = sujeService;
+        this.clienteService = clienteService;
+        this.cliSujService = cliSujService;
+        this.domicilioService = domicilioService;
+        this.empresaTrabajaService = empresaTrabajaService;
+        this.trabajaEnService = trabajaEnService;
+        this.relacionService = relacionService;
+    }
     @Transactional
     public void save(RegistroSIngreso entidad){
         try {
+
             /*
                 OBTENEMOS LOS DATOS DE LA PANTALLA DE LA SOLICITUD DE INGRESO
                 POSTERIORMENTE LO PERSISTIMOS EN LA BD
@@ -95,7 +89,7 @@ public class RegistroSIngresoService {
             dm.setEnte(ente);
             this.domicilioService.save(dm);
 
-            /*********** COMIENZA EL APARTADO DE LA PANTALLA RELACION LABORAL **********/
+            /* COMIENZA EL APARTADO DE LA PANTALLA RELACION LABORAL **********/
 
             Ente enteLaboral = enteService.save(entidad.getSolicitudLaboral().getEnte());
 
@@ -113,15 +107,15 @@ public class RegistroSIngresoService {
             domLaboral.setEnte(enteLaboral);
             this.domicilioService.save(domLaboral);
 
-            /*********** FIN  PANTALLA RELACION LABORAL **********/
+            /* FIN  PANTALLA RELACION LABORAL **********/
 
-            /*********** COMIENZA EL APARTADO DE LA PANTALLA RELACION CON EL CLIENTE **********/
+            /* COMIENZA EL APARTADO DE LA PANTALLA RELACION CON EL CLIENTE **********/
             System.out.println("COMIENZA LA PANTALLA DE RELACIONES");
-            Cliente clienteRelacion = null;
+            Cliente clienteRelacion;
             Relacion relacion = entidad.getSolicitudRelaciones().getRelacion();
-            Ente enteRelacion = null;
-            Sujeto sujeRelacion = null;
-            Domicilio domRelacion = null;
+            Ente enteRelacion;
+            Sujeto sujeRelacion;
+            Domicilio domRelacion;
 
             System.out.println("PASO LOS NULLS ");
 
@@ -138,7 +132,7 @@ public class RegistroSIngresoService {
 
                 domRelacion = entidad.getSolicitudRelaciones().getRelacionesCliente().getDomicilio();
                 domRelacion.setEnte(enteRelacion);
-                domRelacion = domicilioService.save(domRelacion);
+                this.domicilioService.save(domRelacion);
 
                 relacion.setCliente(clienteService.save(clienteRelacion));
 
@@ -152,7 +146,7 @@ public class RegistroSIngresoService {
 
                 domRelacion = entidad.getSolicitudRelaciones().getDomicilio();
                 domRelacion.setEnte(enteRelacion);
-                domRelacion = this.domicilioService.save(domRelacion);
+                this.domicilioService.save(domRelacion);
             }
             System.out.println("LLENOS LOS FILTROS ");
             relacion.setSolicitudIngreso(soli);
@@ -160,7 +154,7 @@ public class RegistroSIngresoService {
 
             this.relacionService.save(relacion);
 
-            /*********** FIN  PANTALLA RELACION CON EL CLIENTE **********/
+            /* FIN  PANTALLA RELACION CON EL CLIENTE **********/
 
 
 
