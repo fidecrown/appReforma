@@ -4,8 +4,13 @@ import com.web.api.appreforma.entidades.*;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.logging.Logger;
+
 @Service
 public class RegistroSIngresoService {
+
+    Logger logger = Logger.getLogger(getClass().getName());
+
     private final SolicitudIngresoService solicitudIngresoService;
     private final PerfilClienteService perfilClienteService;
     private final EnteService enteService;
@@ -110,18 +115,18 @@ public class RegistroSIngresoService {
             /* FIN  PANTALLA RELACION LABORAL **********/
 
             /* COMIENZA EL APARTADO DE LA PANTALLA RELACION CON EL CLIENTE **********/
-            System.out.println("COMIENZA LA PANTALLA DE RELACIONES");
+            logger.info("COMIENZA LA PANTALLA DE RELACIONES");
             Cliente clienteRelacion;
             Relacion relacion = entidad.getSolicitudRelaciones().getRelacion();
             Ente enteRelacion;
             Sujeto sujeRelacion;
             Domicilio domRelacion;
 
-            System.out.println("PASO LOS NULLS ");
+            logger.info("PASO LOS NULLS ");
 
 
             if(entidad.getSolicitudRelaciones().getRelacionesCliente() != null){
-                System.out.println("ENTRO AL CLIENTE ");
+                logger.info("ENTRO AL CLIENTE ");
                 clienteRelacion = entidad.getSolicitudRelaciones().getRelacionesCliente().getCliente();
 
                 enteRelacion = enteService.save(entidad.getSolicitudRelaciones().getRelacionesCliente().getEnte());
@@ -137,7 +142,7 @@ public class RegistroSIngresoService {
                 relacion.setCliente(clienteService.save(clienteRelacion));
 
             }else {
-                System.out.println("ENTRO A LLENAR LA RELACION ");
+                logger.info("ENTRO A LLENAR LA RELACION ");
                 enteRelacion = enteService.save(entidad.getSolicitudRelaciones().getEnte());
 
                 sujeRelacion = entidad.getSolicitudRelaciones().getSujeto();
@@ -148,7 +153,7 @@ public class RegistroSIngresoService {
                 domRelacion.setEnte(enteRelacion);
                 this.domicilioService.save(domRelacion);
             }
-            System.out.println("LLENOS LOS FILTROS ");
+            logger.info("LLENOS LOS FILTROS ");
             relacion.setSolicitudIngreso(soli);
             relacion.setSujeto(sujeRelacion);
 
@@ -159,7 +164,6 @@ public class RegistroSIngresoService {
 
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             throw new RuntimeException(e);
         }
     }
