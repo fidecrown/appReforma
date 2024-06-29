@@ -1,6 +1,5 @@
 package com.web.api.appreforma.entidades;
 
-import com.web.api.appreforma.entidades.catalogos.Baja;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -2,7 +2,6 @@ package com.web.api.appreforma.controladores;
 
 import com.web.api.appreforma.entidades.PerfilCliente;
 import com.web.api.appreforma.servicios.PerfilClienteService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +11,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "reforma/api/v1/perfil_cliente")
 public class PerfilClienteController {
 
-    @Autowired
-    private PerfilClienteService service;
+    private final PerfilClienteService service;
+
+    public PerfilClienteController(PerfilClienteService service) {
+        this.service = service;
+    }
 
     @GetMapping("")
     public ResponseEntity<?> getAll(){

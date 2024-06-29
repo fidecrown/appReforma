@@ -60,7 +60,7 @@ public class Entidad {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "fecha_actualizacion")
-    private Date fecha_actualizacion;
+    private Date fechaActualizacion;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "enteid")

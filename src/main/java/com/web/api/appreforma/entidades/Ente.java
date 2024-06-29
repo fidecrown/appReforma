@@ -21,8 +21,4 @@ public class Ente {
     @Column(name = "descripcion")
     private String descripcion;
 
-    /*
-    @OneToOne(mappedBy = "ente", cascade = CascadeType.ALL)
-    private Sujeto sujeto;
-     */
 }

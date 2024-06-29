@@ -44,21 +44,23 @@ public class Sujeto {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "created_at")
-    private Date created_at;
+    private Date createdAt;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "update_at")
-    private Date update_at;
+    private Date updateAt;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "enteid")
     private Ente ente;
+
     @PrePersist
     public void fcrecacion(){
-        this.created_at = new Date();
+        this.createdAt = new Date();
     }
+
     @PreUpdate
     public void factualizacion(){
-        this.update_at = new Date();
+        this.updateAt = new Date();
     }
 }

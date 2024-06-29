@@ -22,7 +22,7 @@ public class Cliente {
     private Integer clienteid;
 
     @Column(name = "numero_cliente")
-    private String numero_cliente;
+    private String numeroCliente;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "fechaingreso")
@@ -41,11 +41,11 @@ public class Cliente {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "created_at")
-    private Date created_at;
+    private Date createdAt;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "update_at")
-    private Date update_at;
+    private Date updateAt;
 
     @OneToOne
     @JoinColumn(name = "solicitudid")
@@ -57,10 +57,10 @@ public class Cliente {
 
     @PrePersist
     public void fcrecacion(){
-        this.created_at = new Date();
+        this.createdAt = new Date();
     }
     @PreUpdate
     public void factualizacion(){
-        this.update_at = new Date();
+        this.updateAt = new Date();
     }
 }

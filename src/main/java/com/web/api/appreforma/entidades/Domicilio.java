@@ -1,14 +1,11 @@
 package com.web.api.appreforma.entidades;
 
-import com.web.api.appreforma.entidades.catalogos.ClienteCatalogo;
 import com.web.api.appreforma.entidades.catalogos.Colonia;
-import com.web.api.appreforma.entidades.catalogos.Nacionalidad;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
-import java.util.Date;
+
 
 @Data
 @AllArgsConstructor
@@ -25,19 +22,19 @@ public class Domicilio {
     private String calle;
 
     @Column(name = "numero_exterior")
-    private Integer numero_exterior;
+    private Integer numeroExterior;
 
     @Column(name = "numero_interior")
-    private Integer numero_interior;
+    private Integer numeroInterior;
 
     @Column(name = "telefono")
     private String telefono;
 
     @Column(name = "entrecalle_1")
-    private String entrecalle_1;
+    private String entreCalle1;
 
     @Column(name = "entrecalle_2")
-    private String entrecalle_2;
+    private String entreCalle2;
 
     @Column(name = "referencia")
     private String referencia;

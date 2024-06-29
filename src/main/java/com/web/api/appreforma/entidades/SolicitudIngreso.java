@@ -21,7 +21,7 @@ public class SolicitudIngreso {
     private Integer solicitudid;
 
     @Column(name = "numero_solicitud")
-    private Integer numero_solicitud;
+    private Integer numeroSolicitud;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "fechasolicitud")
@@ -38,7 +38,7 @@ public class SolicitudIngreso {
     private String periorisidadmovimientos;
 
     @Column(name = "finalidad_cuenta")
-    private Integer finalidad_cuenta;
+    private Integer finalidadCuenta;
 
     @Column(name = "medioentero")
     private Integer medioentero;
@@ -61,7 +61,7 @@ public class SolicitudIngreso {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "fecha_ultima_actualizacion")
-    private Date fecha_ultima_actualizacion;
+    private Date fechaUltimaActualizacion;
 
     @Column(name = "lastserie",length = 2)
     private String lastserie;

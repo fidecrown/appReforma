@@ -34,7 +34,7 @@ public class Relacion {
     //# POSIBLE CONVERTIRLO EN UN CATALOGO DE RELACIONES
     //# BENEFICIARIO,CONYUGE,REPRESENTANTE, COOTILURA,PERSONAJURIDICA... ETC
     @Column(name = "tipo_relacion")
-    private Integer tipo_relacion;
+    private Integer tipoRelacion;
 
     //# POSIBLE CONVERTIRLO EN UN CATALOGO DE ESTADOS CIVILES
     //# CASADO-JUNTO-UNION LIBRE-DIVORCIADO... ETC
@@ -59,11 +59,11 @@ public class Relacion {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "created_at")
-    private Date created_at;
+    private Date createdAt;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "update_at")
-    private Date update_at;
+    private Date updateAt;
 
     @OneToOne
     @JoinColumn(name = "solicitudid")
@@ -91,10 +91,10 @@ public class Relacion {
 
     @PrePersist
     public void fcrecacion(){
-        this.created_at = new Date();
+        this.createdAt = new Date();
     }
     @PreUpdate
     public void factualizacion(){
-        this.update_at = new Date();
+        this.updateAt = new Date();
     }
 }

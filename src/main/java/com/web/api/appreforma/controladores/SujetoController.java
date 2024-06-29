@@ -2,7 +2,6 @@ package com.web.api.appreforma.controladores;
 
 import com.web.api.appreforma.entidades.Sujeto;
 import com.web.api.appreforma.servicios.SujetoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +11,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "reforma/api/v1/sujetos")
 public class SujetoController {
 
-    @Autowired
-    private SujetoService sujeService;
+    private final SujetoService sujeService;
+
+    public SujetoController(SujetoService sujeService) {
+        this.sujeService = sujeService;
+    }
 
     @GetMapping("")
     public ResponseEntity<?> getAll(){

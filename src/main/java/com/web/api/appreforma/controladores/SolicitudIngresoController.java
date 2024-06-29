@@ -2,7 +2,6 @@ package com.web.api.appreforma.controladores;
 
 import com.web.api.appreforma.entidades.SolicitudIngreso;
 import com.web.api.appreforma.servicios.SolicitudIngresoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +11,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "reforma/api/v1/solicitud_ingreso")
 public class SolicitudIngresoController {
 
-    @Autowired
-    private SolicitudIngresoService service;
+    private final SolicitudIngresoService service;
+
+    public SolicitudIngresoController(SolicitudIngresoService service) {
+        this.service = service;
+    }
 
     @GetMapping("")
     public ResponseEntity<?> getAll(){

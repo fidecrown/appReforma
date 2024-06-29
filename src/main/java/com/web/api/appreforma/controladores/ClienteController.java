@@ -2,18 +2,22 @@ package com.web.api.appreforma.controladores;
 
 import com.web.api.appreforma.entidades.Cliente;
 import com.web.api.appreforma.servicios.ClienteService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "reforma/api/v1/clientes")
 public class ClienteController {
 
-    @Autowired
-    private ClienteService service;
+    private final ClienteService service;
+
+    public ClienteController(ClienteService service) {
+        this.service = service;
+    }
 
     @GetMapping("")
     public ResponseEntity<?> getAll(){

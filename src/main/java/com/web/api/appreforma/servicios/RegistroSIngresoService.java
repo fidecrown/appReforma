@@ -2,7 +2,6 @@ package com.web.api.appreforma.servicios;
 
 import com.web.api.appreforma.entidades.*;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.logging.Logger;
 
@@ -43,7 +42,7 @@ public class RegistroSIngresoService {
                 POSTERIORMENTE LO PERSISTIMOS EN LA BD
              */
             SolicitudIngreso soli = entidad.getSolicitudIngreso();
-            soli.setNumero_solicitud(solicitudIngresoService.getNumeroSolicitud());
+            soli.setNumeroSolicitud(solicitudIngresoService.getNumeroSolicitud());
             soli = solicitudIngresoService.save(soli);
             /*
                 OBTENEMOS LOS DATOS DE LA PANTALLA DEL PERFIL DEL CLIENTE
@@ -72,7 +71,7 @@ public class RegistroSIngresoService {
                 POSTERIORMENTE LO PERSISTIMOS EN LA BD
              */
             Cliente cliente = entidad.getCliente();
-            cliente.setNumero_cliente(clienteService.getNumero_Cliente());
+            cliente.setNumeroCliente(clienteService.getNumero_Cliente());
             cliente.setSolicitudIngreso(soli);
             cliente = clienteService.save(cliente);
 
@@ -160,8 +159,6 @@ public class RegistroSIngresoService {
             this.relacionService.save(relacion);
 
             /* FIN  PANTALLA RELACION CON EL CLIENTE **********/
-
-
 
         } catch (Exception e) {
             throw new RuntimeException(e);
