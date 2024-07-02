@@ -21,7 +21,7 @@ public class Cliente {
     @Column(name = "clienteid")
     private Integer clienteid;
 
-    @Column(name = "numero_cliente")
+    @Column(name = "numero_cliente", columnDefinition = "TEXT")
     private String numeroCliente;
 
     @Temporal(TemporalType.DATE)

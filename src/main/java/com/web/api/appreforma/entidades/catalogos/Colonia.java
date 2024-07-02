@@ -17,10 +17,10 @@ public class Colonia {
     @Column(name = "coloniaid")
     private Integer coloniaid;
 
-    @Column(name = "nombrecolonia")
+    @Column(name = "nombrecolonia", columnDefinition = "TEXT")
     private String nombrecolonia;
 
-    @Column(name = "codigopostal")
+    @Column(name = "codigopostal", columnDefinition = "TEXT")
     private String codigopostal;
 
     @OneToOne

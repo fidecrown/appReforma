@@ -18,7 +18,7 @@ public class Domicilio {
     @Column(name = "domicilioid")
     private Integer domicilioid;
 
-    @Column(name = "calle")
+    @Column(name = "calle", columnDefinition = "TEXT")
     private String calle;
 
     @Column(name = "numero_exterior")
@@ -27,23 +27,23 @@ public class Domicilio {
     @Column(name = "numero_interior")
     private Integer numeroInterior;
 
-    @Column(name = "telefono")
+    @Column(name = "telefono", columnDefinition = "TEXT")
     private String telefono;
 
-    @Column(name = "entrecalle_1")
+    @Column(name = "entrecalle_1", columnDefinition = "TEXT")
     private String entreCalle1;
 
-    @Column(name = "entrecalle_2")
+    @Column(name = "entrecalle_2", columnDefinition = "TEXT")
     private String entreCalle2;
 
-    @Column(name = "referencia")
+    @Column(name = "referencia", columnDefinition = "TEXT")
     private String referencia;
 
     @Column(name = "numerodomicilio")
     private Integer numerodomicilio;
 
     /* POSIBLEMENTE TENGA QUE SER UN CATALOGO*/
-    @Column(name = "tiempoarraigo")
+    @Column(name = "tiempoarraigo", columnDefinition = "TEXT")
     private String tiempoarraigo;
 
     @OneToOne

@@ -20,19 +20,19 @@ public class Sujeto {
     @Column(name = "sujetoid")
     private Integer sujetoid;
 
-    @Column(name = "nombre")
+    @Column(name = "nombre", columnDefinition = "TEXT")
     private String nombre;
 
-    @Column(name = "paterno")
+    @Column(name = "paterno", columnDefinition = "TEXT")
     private String paterno;
 
-    @Column(name = "materno")
+    @Column(name = "materno", columnDefinition = "TEXT")
     private String materno;
 
-    @Column(name = "rfc")
+    @Column(name = "rfc", columnDefinition = "TEXT")
     private String rfc;
 
-    @Column(name = "curp")
+    @Column(name = "curp", columnDefinition = "TEXT")
     private String curp;
 
     @Temporal(TemporalType.DATE)

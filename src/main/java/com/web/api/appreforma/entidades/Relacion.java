@@ -25,7 +25,7 @@ public class Relacion {
 
     //# POSIBLE CONVERTIRLO EN UN CATALOGO DE PARENTESCOS
     //# ESPOSA-PAPA-HIJO-TIA-PRIMA ... ETC
-    @Column(name = "parentesco")
+    @Column(name = "parentesco", columnDefinition = "TEXT")
     private String parentesco;
 
     @Column(name = "porcentaje")
@@ -45,16 +45,16 @@ public class Relacion {
     @Column(name = "sexo")
     private Integer sexo;
 
-    @Column(name = "email")
+    @Column(name = "email", columnDefinition = "TEXT")
     private String email;
 
-    @Column(name = "telefonocelular")
+    @Column(name = "telefonocelular", columnDefinition = "TEXT")
     private String telefonocelular;
 
     @Column(name = "regimen")
     private Integer regimen;
 
-    @Column(name = "nombreconyuge")
+    @Column(name = "nombreconyuge", columnDefinition = "TEXT")
     private String nombreconyuge;
 
     @Temporal(TemporalType.DATE)

@@ -17,10 +17,10 @@ public class Estado {
     @Column(name = "estadoid")
     private Integer estadoid;
 
-    @Column(name = "nombreestado")
+    @Column(name = "nombreestado", columnDefinition = "TEXT")
     private String nombreestado;
 
-    @Column(name = "claveestado")
+    @Column(name = "claveestado", columnDefinition = "TEXT")
     private String claveestado;
 
 }

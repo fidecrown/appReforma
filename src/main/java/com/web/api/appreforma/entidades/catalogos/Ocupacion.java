@@ -17,7 +17,7 @@ public class Ocupacion {
     @Column(name = "ocupacionid")
     private Integer ocupacionid;
 
-    @Column(name = "descripcion")
+    @Column(name = "descripcion", columnDefinition = "TEXT")
     private String descripcion;
 
     @OneToOne

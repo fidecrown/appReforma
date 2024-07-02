@@ -17,7 +17,7 @@ public class Baja {
     @Column(name = "bajaid")
     private Integer bajaid;
 
-    @Column(name = "descripcion")
+    @Column(name = "descripcion", columnDefinition = "TEXT")
     private String descripcion;
 
 }

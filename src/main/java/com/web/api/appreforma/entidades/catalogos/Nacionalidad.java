@@ -18,9 +18,9 @@ public class Nacionalidad {
     @Column(name = "nacionalidadid")
     private Integer nacionalidadid;
 
-    @Column(name = "nacionalidad")
+    @Column(name = "nacionalidad", columnDefinition = "TEXT")
     private String nacionalidad;
 
-    @Column(name = "pais")
+    @Column(name = "pais", columnDefinition = "TEXT")
     private String pais;
 }

@@ -29,13 +29,13 @@ public class PerfilCliente {
     @Column(name = "estadocivil")
     private Integer estadocivil;
 
-    @Column(name = "telefonocelular")
+    @Column(name = "telefonocelular", columnDefinition = "TEXT")
     private String telefonocelular;
 
     @Column(name = "tipovivienda")
     private Integer tipovivienda;
 
-    @Column(name = "tiempoarraigo")
+    @Column(name = "tiempoarraigo", columnDefinition = "TEXT")
     private String tiempoarraigo;
 
     @Column(name = "perioricidadingresos")

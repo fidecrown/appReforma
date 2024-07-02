@@ -17,7 +17,7 @@ public class Ciudad {
     @Column(name = "ciudadid")
     private Integer ciudadid;
 
-    @Column(name = "nombre")
+    @Column(name = "nombre", columnDefinition = "TEXT")
     private String nombre;
 
     @OneToOne

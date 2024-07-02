@@ -17,7 +17,7 @@ public class ClienteCatalogo {
     @Column(name = "catalogoclienteid")
     private Integer catalogoclienteid;
 
-    @Column(name = "descripcion")
+    @Column(name = "descripcion", columnDefinition = "TEXT")
     private String descripcion;
 
 }

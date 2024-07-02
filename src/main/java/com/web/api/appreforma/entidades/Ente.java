@@ -18,7 +18,7 @@ public class Ente {
     @Column(name = "enteid")
     private Integer enteid;
 
-    @Column(name = "descripcion")
+    @Column(name = "descripcion", columnDefinition = "TEXT")
     private String descripcion;
 
 }

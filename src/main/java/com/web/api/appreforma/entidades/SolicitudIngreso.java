@@ -31,10 +31,10 @@ public class SolicitudIngreso {
     @JoinColumn(name = "nacionalidadid")
     private Nacionalidad nacionalidad;
 
-    @Column(name = "correoelectronico")
+    @Column(name = "correoelectronico", columnDefinition = "TEXT")
     private String correoelectronico;
 
-    @Column(name = "periorisidadmovimientos")
+    @Column(name = "periorisidadmovimientos", columnDefinition = "TEXT")
     private String periorisidadmovimientos;
 
     @Column(name = "finalidad_cuenta")
@@ -56,7 +56,7 @@ public class SolicitudIngreso {
     @JoinColumn(name = "catalogoclienteid")
     private ClienteCatalogo clienteCatalogo;
 
-    @Column(name = "dondetienecuentas")
+    @Column(name = "dondetienecuentas", columnDefinition = "TEXT")
     private String dondetienecuentas;
 
     @Temporal(TemporalType.DATE)

@@ -19,13 +19,13 @@ public class EmpresaTrabaja {
     @Column(name = "empresaid")
     private Integer empresaid;
 
-    @Column(name = "nombre")
+    @Column(name = "nombre", columnDefinition = "TEXT")
     private String nombre;
 
-    @Column(name = "rfc")
+    @Column(name = "rfc", columnDefinition = "TEXT")
     private String rfc;
 
-    @Column(name = "nombrejefedirecto")
+    @Column(name = "nombrejefedirecto", columnDefinition = "TEXT")
     private String nombrejefedirecto;
 
     @OneToOne

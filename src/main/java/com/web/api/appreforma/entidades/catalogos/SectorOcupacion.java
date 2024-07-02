@@ -17,7 +17,7 @@ public class SectorOcupacion {
     @Column(name = "sector_ocupacionid")
     private Integer sector_ocupacionid;
 
-    @Column(name = "descripcion")
+    @Column(name = "descripcion", columnDefinition = "TEXT")
     private String descripcion;
 
     @OneToOne

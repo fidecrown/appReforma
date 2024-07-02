@@ -17,13 +17,13 @@ public class Sector {
     @Column(name = "sectorid")
     private Integer sectorid;
 
-    @Column(name = "descripcion")
+    @Column(name = "descripcion", columnDefinition = "TEXT")
     private String descripcion;
 
     @Column(name = "nivelriesgo")
     private Integer nivelriesgo;
 
-    @Column(name = "sector")
+    @Column(name = "sector", columnDefinition = "TEXT")
     private String sector;
 
 }
