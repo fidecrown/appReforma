@@ -2,6 +2,8 @@ package com.web.api.appreforma.servicios;
 
 import com.web.api.appreforma.entidades.*;
 import org.springframework.stereotype.Service;
+
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.logging.Logger;
 
@@ -161,7 +163,7 @@ public class RegistroSIngresoService {
             /* FIN  PANTALLA RELACION CON EL CLIENTE **********/
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new EntityNotFoundException("OCURRIO ALGUN ERROR");
         }
     }
 }
