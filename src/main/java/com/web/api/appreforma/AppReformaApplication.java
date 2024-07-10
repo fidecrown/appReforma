@@ -11,7 +11,8 @@ import java.time.format.DateTimeFormatter;
 @SpringBootApplication
 public class AppReformaApplication {
 
-    private static  final String dateFormat = "yyyy-MM-dd";
+    public static  final String DATE_FORMAT = "yyyy-MM-dd";
+
     public static void main(String[] args) {
         SpringApplication.run(AppReformaApplication.class, args);
     }
@@ -19,8 +20,8 @@ public class AppReformaApplication {
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer jsonCustomizer(){
         return builder ->{
-            builder.simpleDateFormat(dateFormat);
-            builder.serializers(new LocalDateSerializer(DateTimeFormatter.ofPattern(dateFormat)));
+            builder.simpleDateFormat(DATE_FORMAT);
+            builder.serializers(new LocalDateSerializer(DateTimeFormatter.ofPattern(DATE_FORMAT)));
         };
     }
 }
