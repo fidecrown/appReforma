@@ -3,7 +3,7 @@ package com.web.api.appreforma.servicios;
 import com.web.api.appreforma.entidades.SolicitudIngreso;
 import com.web.api.appreforma.repositorios.SolicitudIngresoRepository;
 import org.springframework.stereotype.Service;
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class SolicitudIngresoService extends BaseServiceImpl<SolicitudIngreso, SolicitudIngresoRepository>{

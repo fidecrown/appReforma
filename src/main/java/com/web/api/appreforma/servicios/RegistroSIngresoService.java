@@ -1,10 +1,10 @@
 package com.web.api.appreforma.servicios;
 
 import com.web.api.appreforma.entidades.*;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityNotFoundException;
-import javax.transaction.Transactional;
 import java.util.logging.Logger;
 
 @Service
@@ -35,6 +35,7 @@ public class RegistroSIngresoService {
         this.trabajaEnService = trabajaEnService;
         this.relacionService = relacionService;
     }
+
     @Transactional
     public void save(RegistroSIngreso entidad){
         try {

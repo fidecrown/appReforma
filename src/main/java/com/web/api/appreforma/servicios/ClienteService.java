@@ -3,8 +3,7 @@ package com.web.api.appreforma.servicios;
 import com.web.api.appreforma.entidades.Cliente;
 import com.web.api.appreforma.repositorios.ClienteRepository;
 import org.springframework.stereotype.Service;
-import javax.transaction.Transactional;
-
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ClienteService extends BaseServiceImpl<Cliente, ClienteRepository>{
