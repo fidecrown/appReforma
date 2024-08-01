@@ -28,8 +28,8 @@ public class BaseServiceImpl<E, R extends JpaRepository<E, Integer>> implements 
     @Transactional
     public E findById(Integer id) throws Exception {
         try {
-            Optional<E> entidad = baseRepository.findById(id);
-            return entidad.get();
+            //Optional<E> entidad = baseRepository.findById(id);
+            return baseRepository.findById(id).get();
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
