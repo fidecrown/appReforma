@@ -36,6 +36,52 @@ public class RegistroSIngresoService {
         this.relacionService = relacionService;
     }
 
+    @Transactional(readOnly = true)
+    public RegistroSIngreso getOne( Integer clienteId){
+        RegistroSIngreso registroSolicitud = new RegistroSIngreso();
+
+        try {
+
+            Cliente cliente = clienteService.findById(clienteId);
+            SolicitudIngreso solIngreso = solicitudIngresoService.findById(cliente.getSolicitudIngreso().getSolicitudid());
+            PerfilCliente perfilCliente = perfilClienteService.findById(solIngreso.getSolicitudid());
+            ClienteSujeto clienteSujeto = cliSujService.findById(cliente.getClienteid());
+            Domicilio domicilio = domicilioService.findById(clienteSujeto.getSujeto().getEnte().getEnteid());
+            TrabajaEn trabajaEn = trabajaEnService.findById(cliente.getSolicitudIngreso().getSolicitudid());
+
+            SolicitudLaboral solicitudLaboral = new SolicitudLaboral();
+            Domicilio domicilioLaboral = domicilioService.findById(trabajaEn.getEmpresaTrabaja().getEnte().getEnteid());
+            solicitudLaboral.setTrabajaEn(trabajaEn);
+            solicitudLaboral.setEmpresaTrabaja(trabajaEn.getEmpresaTrabaja());
+            solicitudLaboral.setEnte(trabajaEn.getEmpresaTrabaja().getEnte());
+            solicitudLaboral.setDomicilio(domicilioLaboral);
+
+            SolicitudRelaciones solicitudRelaciones = new SolicitudRelaciones();
+            Relacion relacion = relacionService.findById(solIngreso.getSolicitudid());
+            Domicilio domicilioRelaciones = domicilioService.findById(relacion.getSujeto().getEnte().getEnteid());
+            solicitudRelaciones.setRelacion(relacion);
+            solicitudRelaciones.setEnte(relacion.getSujeto().getEnte());
+            solicitudRelaciones.setSujeto(relacion.getSujeto());
+            solicitudRelaciones.setDomicilio(domicilioRelaciones);
+
+
+            registroSolicitud.setCliente(cliente);
+            registroSolicitud.setSolicitudIngreso(solIngreso);
+            registroSolicitud.setPerfilCliente(perfilCliente);
+            registroSolicitud.setSujeto(clienteSujeto.getSujeto());
+            registroSolicitud.setEnte(clienteSujeto.getSujeto().getEnte());
+            registroSolicitud.setDomicilio(domicilio);
+            registroSolicitud.setSolicitudLaboral(solicitudLaboral);
+            registroSolicitud.setSolicitudRelaciones(solicitudRelaciones);
+
+            return registroSolicitud;
+
+        }catch (Exception e){
+            throw new EntityNotFoundException("OCURRIO ALGUN ERROR");
+        }
+
+    }
+
     @Transactional
     public void save(RegistroSIngreso entidad){
         try {
@@ -167,4 +213,5 @@ public class RegistroSIngresoService {
             throw new EntityNotFoundException("OCURRIO ALGUN ERROR");
         }
     }
+
 }
