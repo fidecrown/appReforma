@@ -1,5 +1,6 @@
 package com.web.api.appreforma.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.web.api.appreforma.entidades.catalogos.Ciudad;
 import com.web.api.appreforma.entidades.catalogos.Nacionalidad;
 import com.web.api.appreforma.entidades.catalogos.Ocupacion;
@@ -65,16 +66,19 @@ public class Relacion {
     @Column(name = "update_at")
     private Date updateAt;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "solicitudid")
+    @JsonIgnore
     private SolicitudIngreso solicitudIngreso;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sujetoid")
+    @JsonIgnore
     private Sujeto sujeto;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "clienteid")
+    @JsonIgnore
     private Cliente cliente;
 
     @OneToOne

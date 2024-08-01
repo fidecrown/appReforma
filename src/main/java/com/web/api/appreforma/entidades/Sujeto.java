@@ -1,5 +1,6 @@
 package com.web.api.appreforma.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -50,8 +51,9 @@ public class Sujeto {
     @Column(name = "update_at")
     private Date updateAt;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "enteid")
+    @JsonIgnore
     private Ente ente;
 
     @PrePersist

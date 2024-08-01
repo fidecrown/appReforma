@@ -1,5 +1,6 @@
 package com.web.api.appreforma.entidades.catalogos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,8 +20,9 @@ public class Ciudad {
     @Column(name = "nombre", columnDefinition = "TEXT")
     private String nombre;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "estadoid")
+    @JsonIgnore
     private Estado estado;
 
 

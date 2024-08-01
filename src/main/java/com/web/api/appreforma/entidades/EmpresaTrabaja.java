@@ -1,5 +1,6 @@
 package com.web.api.appreforma.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,8 +29,9 @@ public class EmpresaTrabaja {
     @Column(name = "nombrejefedirecto", columnDefinition = "TEXT")
     private String nombrejefedirecto;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "enteid")
+    @JsonIgnore
     private Ente ente;
 
 }

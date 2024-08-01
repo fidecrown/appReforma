@@ -1,5 +1,6 @@
 package com.web.api.appreforma.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,12 +29,14 @@ public class TrabajaEn {
     @Column(name = "fechatermino")
     private Date fechatermino;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "solicitudid")
+    @JsonIgnore
     private SolicitudIngreso solicitudIngreso;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "empresaid")
+    @JsonIgnore
     private EmpresaTrabaja empresaTrabaja;
 
 }

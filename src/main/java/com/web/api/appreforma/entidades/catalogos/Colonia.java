@@ -1,5 +1,6 @@
 package com.web.api.appreforma.entidades.catalogos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,8 +24,9 @@ public class Colonia {
     @Column(name = "codigopostal", columnDefinition = "TEXT")
     private String codigopostal;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ciudadid")
+    @JsonIgnore
     private Ciudad ciudad;
 
 }

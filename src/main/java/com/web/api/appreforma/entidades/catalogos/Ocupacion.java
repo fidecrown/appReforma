@@ -1,5 +1,6 @@
 package com.web.api.appreforma.entidades.catalogos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +21,8 @@ public class Ocupacion {
     @Column(name = "descripcion", columnDefinition = "TEXT")
     private String descripcion;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sector_ocupacionid")
+    @JsonIgnore
     private SectorOcupacion sectorOcupacion;
 }

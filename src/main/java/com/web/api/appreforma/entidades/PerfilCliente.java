@@ -1,5 +1,7 @@
 package com.web.api.appreforma.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.web.api.appreforma.entidades.catalogos.Ciudad;
 import com.web.api.appreforma.entidades.catalogos.Ocupacion;
 import lombok.AllArgsConstructor;
@@ -7,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
+
 import java.util.Date;
 
 @Data
@@ -84,8 +87,10 @@ public class PerfilCliente {
     @Column(name = "actualizacion")
     private Date actualizacion;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "solicitudid")
+    //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonIgnore
     private SolicitudIngreso solicitudIngreso;
 
     @OneToOne
