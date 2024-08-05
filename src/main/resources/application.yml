@@ -15,8 +15,8 @@ spring:
     name: api-ms-appreforma
   #Configuracion de la BD- login - usuario
   datasource:
-    url: jdbc:postgresql://localhost:54322/appReforma
-    username: sistema
+    url: jdbc:postgresql://localhost:54321/appReforma
+    username: postgres
     password: 11073026
   jpa:
     hibernate:
