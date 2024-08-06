@@ -60,8 +60,8 @@
         DESCOMENTAR LA SIGUIENTE DEPENCIA CON LA FINALIDAD DE PODER CARGAR
         E INSERTAR LOS REGISTROS DE TODOS LOS CATALOGOS DE LA BD.
 
-        -->
 
+-->
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-database-postgresql</artifactId>

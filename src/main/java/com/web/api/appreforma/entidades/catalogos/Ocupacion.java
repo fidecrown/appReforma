@@ -21,7 +21,7 @@ public class Ocupacion {
     @Column(name = "descripcion", columnDefinition = "TEXT")
     private String descripcion;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sector_ocupacionid")
     @JsonIgnore
     private SectorOcupacion sectorOcupacion;

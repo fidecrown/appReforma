@@ -20,7 +20,7 @@ public class Ciudad {
     @Column(name = "nombre", columnDefinition = "TEXT")
     private String nombre;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "estadoid")
     @JsonIgnore
     private Estado estado;

@@ -24,7 +24,7 @@ public class Colonia {
     @Column(name = "codigopostal", columnDefinition = "TEXT")
     private String codigopostal;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ciudadid")
     @JsonIgnore
     private Ciudad ciudad;

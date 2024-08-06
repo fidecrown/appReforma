@@ -21,7 +21,7 @@ public class SectorOcupacion {
     @Column(name = "descripcion", columnDefinition = "TEXT")
     private String descripcion;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "sectorid")
     private Sector sector;
 
